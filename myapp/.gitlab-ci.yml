@@ -1,0 +1,54 @@
+stages:
+  - build
+  - security
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+  DT_API_URL: "http://localhost:8080"
+  DT_API_KEY: "$DT_API_KEY"
+
+generate_sbom:
+  image: maven:3.9.6-eclipse-temurin-17
+  stage: build
+  script:
+    - mvn -B -ntp clean verify -DskipTests
+  artifacts:
+    paths:
+      - target/bom.xml
+      - target/bom.json
+    expire_in: 1 week
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+
+dependency_check_scan:
+  image: owasp/dependency-check:latest
+  stage: security
+  needs: ["generate_sbom"]
+  script:
+    - dependency-check.sh --project "$CI_PROJECT_PATH" --scan . \
+      --out target/dependency-check-report --format ALL
+  artifacts:
+    paths:
+      - target/dependency-check-report
+    expire_in: 1 week
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+
+dependency_track_upload:
+  image: curlimages/curl:8
+  stage: security
+  needs: ["generate_sbom"]
+  script:
+    - curl -s -X POST "$DT_API_URL/api/v1/bom" \
+      -H "X-Api-Key: $DT_API_KEY" \
+      -F "autoCreate=true" \
+      -F "projectName=$CI_PROJECT_PATH" \
+      -F "projectVersion=$CI_COMMIT_REF_NAME" \
+      -F "bom=@target/bom.xml" \
+      | tee dt-upload.log
+  artifacts:
+    paths:
+      - dt-upload.log
+    expire_in: 1 week
+  rules:
+    - if: $CI_MERGE_REQUEST_ID

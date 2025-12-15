@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuites failures="0" name="dependency-check" tests="1"><testsuite failures="0" errors="0" time="0" id="0" name="/src/target/myapp-1.0-SNAPSHOT.jar" package="myapp-1.0-SNAPSHOT.jar" skipped="0" tests="1" timestamp="2025-12-15T20:15:05.372450089"><testcase classname="dependency-check" name="myapp-1.0-SNAPSHOT.jar"/></testsuite></testsuites>

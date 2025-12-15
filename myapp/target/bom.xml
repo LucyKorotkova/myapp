@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom serialNumber="urn:uuid:c20339aa-bbc5-4d2c-908a-aa85bf46afc7" version="1" xmlns="http://cyclonedx.org/schema/bom/1.4">
+  <metadata>
+    <timestamp>2025-12-15T18:30:58Z</timestamp>
+    <tools>
+      <tool>
+        <vendor>OWASP Foundation</vendor>
+        <name>CycloneDX Maven plugin</name>
+        <version>2.7.9</version>
+        <hashes>
+          <hash alg="MD5">8e595cdb67f17e4b41e046456970591d</hash>
+          <hash alg="SHA-1">69e8ca804520d09ce4657e7235bae84d01cbffa6</hash>
+          <hash alg="SHA-256">aa09074fe5aa403c008cd4fc7ef8ce41cd244489337f16b3e91a3914158a4db8</hash>
+          <hash alg="SHA-512">1488a8112da8e675813d7585f57c5efb178aed32901118186ee12d0e4ae3d19c53774c7f860bf70d17d70f050119b69443a2637cf641675b4b5d9cdcdd69b89b</hash>
+          <hash alg="SHA-384">b097295dfbf10887abc6eec58d4d0822cde5a73d1f5c1cf183a57bf569016ad5ced9d34efae3e574d82bb62837540c6c</hash>
+          <hash alg="SHA3-384">289f9520bd73a2031276248a6ef8f0891c691062c2d1ea86a2bc9ea8db2c52377d92a53be9957179e71aee3deda26a8c</hash>
+          <hash alg="SHA3-256">32b50a7efe5d491a4039c0017eca3cf49d98b55fc66d06b3dd06209487323474</hash>
+          <hash alg="SHA3-512">1daf813da53e5d5cda4d0302ff3a5e388aa45d96ebe6dcbe240f35d33f14b1e6390f6bbe7f21f3ed8cf96ebd9f5516a08b18487b7339715109c81cebfc1563df</hash>
+        </hashes>
+      </tool>
+    </tools>
+    <component type="library" bom-ref="pkg:maven/com.example/myapp@1.0-SNAPSHOT?type=jar">
+      <group>com.example</group>
+      <name>myapp</name>
+      <version>1.0-SNAPSHOT</version>
+      <licenses/>
+      <purl>pkg:maven/com.example/myapp@1.0-SNAPSHOT?type=jar</purl>
+    </component>
+    <properties>
+      <property name="maven.goal">makeAggregateBom</property>
+      <property name="maven.scopes">compile,provided,runtime,system</property>
+    </properties>
+  </metadata>
+  <components>
+    <component type="library" bom-ref="pkg:maven/org.apache.logging.log4j/log4j-core@2.13.3?type=jar">
+      <publisher>The Apache Software Foundation</publisher>
+      <group>org.apache.logging.log4j</group>
+      <name>log4j-core</name>
+      <version>2.13.3</version>
+      <description>The Apache Log4j Implementation</description>
+      <scope>required</scope>
+      <hashes>
+        <hash alg="MD5">cc7d55ed69cc5fd34035b15c6edf79a0</hash>
+        <hash alg="SHA-1">4e857439fc4fe974d212adaaaa3b118b8b50e3ec</hash>
+        <hash alg="SHA-256">9529c55814264ab96b0eeba2920ac0805170969c994cc479bd3d4d7eb24a35a8</hash>
+        <hash alg="SHA-512">c1c6063b2bb5effa70276f9e5527b5bed4d918a1499c91de281a0b00c5f6e432dc72d8f18e82054a6693a61d3c837d1dfea61f9eec67ef43fc2b094a717cf94b</hash>
+        <hash alg="SHA-384">6391aad0605f77be38ab5db8bd9ec34935360bdb7ff457fea916fcf8fefb8b799aaba3a0512e754109b33f6f84afc326</hash>
+        <hash alg="SHA3-384">2e5e68a59c496dc36b418049b6caad084e954c3dfbe63149956f70ef9f7cd74e9e31231a47843a83f3b071dd2207ad8f</hash>
+        <hash alg="SHA3-256">e1b0ee1388551f65a18a090c649a57cd32fa68e5eec9e48a3dcf292ad03c4c24</hash>
+        <hash alg="SHA3-512">729436c2b2c27c721655465aed8506a34abf68c126cf1390b0021e37ab61bbb397e39c1a346d7586bffaacfb1001146e8fab476ddb9d0b22658b1b34e5424ddc</hash>
+      </hashes>
+      <licenses>
+        <license>
+          <id>Apache-2.0</id>
+        </license>
+      </licenses>
+      <purl>pkg:maven/org.apache.logging.log4j/log4j-core@2.13.3?type=jar</purl>
+      <externalReferences><reference type="website"><url>https://logging.apache.org/log4j/2.x/log4j-core/</url></reference><reference type="build-system"><url>https://builds.apache.org/job/Log4j%202.x/</url></reference><reference type="distribution"><url>https://logging.apache.org/log4j/2.x/download.html</url></reference><reference type="issue-tracker"><url>https://issues.apache.org/jira/browse/LOG4J2</url></reference><reference type="mailing-list"><url>https://lists.apache.org/list.html?log4j-user@logging.apache.org</url></reference><reference type="vcs"><url>https://git-wip-us.apache.org/repos/asf?p=logging-log4j2.git;a=summary/log4j-core</url></reference></externalReferences>
+    </component>
+    <component type="library" bom-ref="pkg:maven/org.apache.logging.log4j/log4j-api@2.13.3?type=jar">
+      <publisher>The Apache Software Foundation</publisher>
+      <group>org.apache.logging.log4j</group>
+      <name>log4j-api</name>
+      <version>2.13.3</version>
+      <description>The Apache Log4j API</description>
+      <scope>required</scope>
+      <hashes>
+        <hash alg="MD5">236b9969df6b394e88283a9f813b9b95</hash>
+        <hash alg="SHA-1">ec1508160b93d274b1add34419b897bae84c6ca9</hash>
+        <hash alg="SHA-256">2b4b1965c9dce7f3732a0fbf5c8493199c1e6bf8cf65c3e235b57d98da5f36af</hash>
+        <hash alg="SHA-512">468ad08aa891b5c92156849945eee3ab074ae8f4c760b9de9a4c15a70857ae0b98bafb425e6d673e9bd43efef009a8e0b3bee767feaa4fc2fa7564f30b0a8441</hash>
+        <hash alg="SHA-384">7189232d8a6432f6434df8f42295bf384b6c4d2031ec62c1dd794c59b2340d4f541694b0d2150a345756bfd4ef7d1949</hash>
+        <hash alg="SHA3-384">7669c4168ba90eee159cf8a052722df135a0573d611142f88548f6a2d3a7b1df96ccd4cc5dbdfcc6c35f0ec07a820874</hash>
+        <hash alg="SHA3-256">054a01a07c44f527ec96f89f2aba8c56600f49977c69adea1a7211daab4f6e52</hash>
+        <hash alg="SHA3-512">1120d18f1c078c0e9d8e405f829631bb37d2809e595f1d63f7ac35427acaf49673ebbb557d3bf3810fcd683c29f46b718852a024cadf084138a47e1e3feb1359</hash>
+      </hashes>
+      <licenses>
+        <license>
+          <id>Apache-2.0</id>
+        </license>
+      </licenses>
+      <purl>pkg:maven/org.apache.logging.log4j/log4j-api@2.13.3?type=jar</purl>
+      <externalReferences><reference type="website"><url>https://logging.apache.org/log4j/2.x/log4j-api/</url></reference><reference type="build-system"><url>https://builds.apache.org/job/Log4j%202.x/</url></reference><reference type="distribution"><url>https://logging.apache.org/log4j/2.x/download.html</url></reference><reference type="issue-tracker"><url>https://issues.apache.org/jira/browse/LOG4J2</url></reference><reference type="mailing-list"><url>https://lists.apache.org/list.html?log4j-user@logging.apache.org</url></reference><reference type="vcs"><url>https://git-wip-us.apache.org/repos/asf?p=logging-log4j2.git;a=summary/log4j-api</url></reference></externalReferences>
+    </component>
+  </components>
+  <dependencies>
+    <dependency ref="pkg:maven/com.example/myapp@1.0-SNAPSHOT?type=jar">
+      <dependency ref="pkg:maven/org.apache.logging.log4j/log4j-core@2.13.3?type=jar"/>
+    </dependency>
+    <dependency ref="pkg:maven/org.apache.logging.log4j/log4j-core@2.13.3?type=jar">
+      <dependency ref="pkg:maven/org.apache.logging.log4j/log4j-api@2.13.3?type=jar"/>
+    </dependency>
+    <dependency ref="pkg:maven/org.apache.logging.log4j/log4j-api@2.13.3?type=jar"/>
+  </dependencies>
+</bom>

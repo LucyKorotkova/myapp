@@ -1,9 +1,9 @@
-name: Maven ‑ SBOM ‑ DC ‑ DT
+name: Maven - SBOM - DC - DT
 
-on:                            
-  push:                        
+on:
+  push:
     branches: [ main ]
-  pull_request:               
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -24,26 +24,34 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      # pom.xml лежит в myapp/
       - name: Build & generate SBOM
+        working-directory: ./myapp
         run: mvn -B -ntp clean verify -DskipTests
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload SBOM artifacts
+        uses: actions/upload-artifact@v4
         with:
           name: bom
           path: |
-            target/bom.xml
-            target/bom.json
+            myapp/target/bom.xml
+            myapp/target/bom.json
           retention-days: 7
 
       - name: Run OWASP Dependency-Check
         uses: dependency-check/Dependency-Check_Action@main
+        env:
+          # чтобы контейнер не пытался использовать JAVA_HOME с хоста
+          JAVA_HOME: ""
+          JAVA_HOME_17_X64: ""
         with:
-           project: ${{ github.repository }}
-           path: .
-           format: "ALL"
-           output: "dependency-check-report"
+          project: ${{ github.repository }}
+          path: ./myapp              # что сканировать
+          format: "ALL"
+          out: dependency-check-report  # КУДА писать отчёт (НЕ output!)
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload DC report
+        uses: actions/upload-artifact@v4
         with:
           name: dc-report
           path: dependency-check-report
@@ -56,9 +64,10 @@ jobs:
                -F "autoCreate=true" \
                -F "projectName=${{ github.repository }}" \
                -F "projectVersion=${{ github.head_ref || github.ref_name }}" \
-               -F "bom=@target/bom.xml" | tee dt-upload.log
+               -F "bom=@myapp/target/bom.xml" | tee dt-upload.log
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload Dependency-Track log
+        uses: actions/upload-artifact@v4
         with:
           name: dt-upload-log
           path: dt-upload.log
